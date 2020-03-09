@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+}
+ext {
+
+    support_version = '28.0.0'
+    rxjava_version = '2.1.16'
+    rxandroid_version = '2.0.2'
+    rxbinding_version = '2.1.1'
+    play_services_version = '16.0.0'
+    anko_version = "0.10.5"
+    stringcare_version = '0.7'
+    gson_version = "2.8.2"
+    leakcanary_version = "1.6.1"
+    glide_version = "4.8.0"
+
+    retrofit_version = '2.4.0'
+    dagger_version = '2.21'
+    room_version = '2.2.1'
+    koin_version = "1.0.0"
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+//    implementation "com.android.support:appcompat-v7:$support_version"
+
+    // RxJava 2
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    // Koin
+    implementation "org.koin:koin-android-scope:$koin_version"
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation project(':data')
+    implementation project(':domain')
+}

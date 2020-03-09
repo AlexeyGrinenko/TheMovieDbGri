@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TheMovieDbUpcoming</string>
+
+    <string name="please_wait">Please wait…</string>
+    <string name="release_on">Release on</string>
+    <string name="popularity">Popularity:</string>
+    <string name="votes">Votes:</string>
+    <string name="toast_no_internet">Please check you internet connection</string>
+    <string name="is_adult">Is for adult</string>
+    <string name="budget">Budget:</string>
+
+    <string name="belongs_to_collection">Belongs To Collection:</string>
+    <string name="genres">Genres:</string>
+    <string name="imdbId">IMDB Id:</string>
+    <string name="overview">Overview:</string>
+    <string name="production_companies">Production Companies:</string>
+    <string name="production_countries">Production Countries:</string>
+    <string name="revenue">Revenue:</string>
+    <string name="runtime">Runtime:</string>
+    <string name="status">Status:</string>
+    <string name="tagline">Tagline:</string>
+</resources>

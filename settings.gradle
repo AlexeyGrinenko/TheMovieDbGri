@@ -1,0 +1,2 @@
+include ':app', ':remote', ':data', ':domain', ':presentation'
+rootProject.name='TheMovieDbUpcoming'
