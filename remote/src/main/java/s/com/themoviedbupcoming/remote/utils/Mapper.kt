@@ -1,9 +1,7 @@
 package s.com.themoviedbupcoming.remote.utils
 
-import s.com.themoviedbupcoming.domain.model.Genre
-import s.com.themoviedbupcoming.domain.model.Movie
-import s.com.themoviedbupcoming.domain.model.MovieInList
-import s.com.themoviedbupcoming.domain.model.MoviesListResponse
+import s.com.themoviedbupcoming.domain.model.*
+import s.com.themoviedbupcoming.remote.model.GenreResponse
 import s.com.themoviedbupcoming.remote.model.MovieGson
 import s.com.themoviedbupcoming.remote.model.MovieInListGson
 import s.com.themoviedbupcoming.remote.model.MoviesListHttpResponse
@@ -63,4 +61,9 @@ fun MovieGsontoDomain(movieGson: MovieGson) = Movie(
     movieGson.voteCount,
     movieGson.voteAverage
 )
+
+fun GenreListToDomainGenresResponse(response: GenreResponse) =
+    GenresListResponse(response.genresList.map { Genre(it.id, it.name) }
+
+    )
 

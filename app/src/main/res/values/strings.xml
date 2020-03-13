@@ -10,7 +10,7 @@
     <string name="budget">Budget:</string>
 
     <string name="belongs_to_collection">Belongs To Collection:</string>
-    <string name="genres">Genres:</string>
+    <string name="genres">Genres</string>
     <string name="imdbId">IMDB Id:</string>
     <string name="overview">Overview:</string>
     <string name="production_companies">Production Companies:</string>
@@ -19,4 +19,12 @@
     <string name="runtime">Runtime:</string>
     <string name="status">Status:</string>
     <string name="tagline">Tagline:</string>
+    <string name="select_genres">Select Genres</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="years">years</string>
+    <string name="select_year">Select Year</string>
+    <string name="start_search">Start Search</string>
+    <string name="include_adults">Include Adults</string>
+
 </resources>

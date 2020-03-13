@@ -86,7 +86,7 @@ class MovieDetailFragment : BaseFragment(), MovieDetailContract.MovieDetailView 
                 movie.belongsToCollection?.let { movieFields.add("${cnt.getString(R.string.belongs_to_collection)} ${movie.belongsToCollection}") }
                 movie.imdbId?.let { movieFields.add("${cnt.getString(R.string.imdbId)} ${movie.imdbId}") }
 
-                movieFields.add("${cnt.getString(R.string.genres)} ${movie.genres.map { it.name }.joinToString()}")
+                movieFields.add("${cnt.getString(R.string.genres)}: ${movie.genres.map { it.name }.joinToString()}")
 
                 movie.productionCompanies?.let {
                     movieFields.add("${cnt.getString(R.string.production_companies)} ${movie.productionCompanies}")

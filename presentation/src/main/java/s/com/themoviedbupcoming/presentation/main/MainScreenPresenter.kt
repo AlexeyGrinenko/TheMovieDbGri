@@ -1,5 +1,6 @@
 package s.com.themoviedbupcoming.presentation.main
 
+import s.com.themoviedbupcoming.domain.model.SearchModel
 import s.com.themoviedbupcoming.presentation.router.IMainScreenRouter
 
 class MainScreenPresenter(
@@ -12,8 +13,8 @@ class MainScreenPresenter(
         this@MainScreenPresenter.view = view
     }
 
-    override fun onShowsHomeClicked() {
-        mainScreenRouter.openMovieListFragment()
+    override fun onShowsHomeClicked(searchModel:SearchModel) {
+        mainScreenRouter.openMovieListFragment(searchModel)
     }
 
     override fun onShowsClicked(showId: String) {

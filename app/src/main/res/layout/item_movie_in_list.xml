@@ -10,15 +10,6 @@
     android:paddingBottom="@dimen/margin_default_half"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivImageItemList"
-        android:layout_width="@dimen/width_image_in_list"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitleItemList"
@@ -29,8 +20,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/ivImageItemList"
-        app:layout_constraintTop_toTopOf="@id/ivImageItemList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Title d" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -38,26 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default_half"
-        app:layout_constraintStart_toEndOf="@id/ivImageItemList"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitleItemList"
         tools:text="Release on: 2010-01-10" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPopularityItemList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default_half"
-        app:layout_constraintStart_toEndOf="@id/ivImageItemList"
-        app:layout_constraintTop_toBottomOf="@id/tvReleaseDateItemList"
-        tools:text="Popularity: 2010-01-10" />
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvVotesItemList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default_half"
-        app:layout_constraintStart_toEndOf="@id/ivImageItemList"
-        app:layout_constraintTop_toBottomOf="@id/tvPopularityItemList"
-        tools:text="Votes: 2010-01-10" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

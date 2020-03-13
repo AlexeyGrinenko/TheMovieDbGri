@@ -9,21 +9,20 @@ import s.com.themoviedbupcoming.di.KOIN_KEY_SCOPE_MAIN_ACTIVITY
 import s.com.themoviedbupcoming.presentation.main.MainScreenContract
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import s.com.themoviedbupcoming.domain.model.SearchModel
+import s.com.themoviedbupcoming.di.KOIN_KEY_SCOPE_SEARCH_ACTIVITY
 import s.com.themoviedbupcoming.presentation.KEY_ACTIVITY
-import s.com.themoviedbupcoming.presentation.KEY_SEARCH_MODEL
+import s.com.themoviedbupcoming.presentation.search.SearchScreenContract
 
-class MainActivity : BaseActivity(), MainScreenContract.MainScreenView  {
-    private val scopeKoin = getKoin().getOrCreateScope(KOIN_KEY_SCOPE_MAIN_ACTIVITY)
+class SearchActivity : BaseActivity(), SearchScreenContract.SearchScreenView  {
+    private val scopeKoin = getKoin().getOrCreateScope(KOIN_KEY_SCOPE_SEARCH_ACTIVITY)
 
-    private val presenter: MainScreenContract.Presenter by inject { parametersOf(this) }
+    private val presenter: SearchScreenContract.Presenter by inject { parametersOf(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setProperty(KEY_ACTIVITY, this)
-        val searchModel = intent.getSerializableExtra(KEY_SEARCH_MODEL) as SearchModel
         presenter.attachView(this)
-        presenter.onShowsHomeClicked(searchModel)
+        presenter.loadSearchFragment()
     }
 
     override fun onDestroy() {

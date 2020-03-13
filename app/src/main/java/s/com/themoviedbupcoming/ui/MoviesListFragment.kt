@@ -21,6 +21,8 @@ import s.com.themoviedbupcoming.R
 import s.com.themoviedbupcoming.adapters.MoviesListAdapter
 import s.com.themoviedbupcoming.di.KOIN_KEY_SCOPE_MOVIES_LIST_FRAGMENT
 import s.com.themoviedbupcoming.domain.model.MovieInList
+import s.com.themoviedbupcoming.domain.model.SearchModel
+import s.com.themoviedbupcoming.presentation.KEY_SEARCH_MODEL
 import s.com.themoviedbupcoming.presentation.MOVIES_LIST_SCREEN
 import s.com.themoviedbupcoming.presentation.main.MoviesListContract
 import s.com.themoviedbupcoming.utils.gone
@@ -34,7 +36,7 @@ class MoviesListFragment : BaseFragment(), MoviesListContract.MoviesListView,
     override val contextName = MOVIES_LIST_SCREEN
 
     private val presenter: MoviesListContract.MoviesListPresenter by inject { parametersOf(this.activity as MainActivity) }
-    private val shows: ArrayList<MovieInList> = ArrayList()
+    private val movies: ArrayList<MovieInList> = ArrayList()
     private lateinit var showsListAdapter: MoviesListAdapter
 
     override fun onCreateView(
@@ -48,11 +50,13 @@ class MoviesListFragment : BaseFragment(), MoviesListContract.MoviesListView,
         super.onViewCreated(view, savedInstanceState)
         scopeKoin = getKoin().getOrCreateScope(KOIN_KEY_SCOPE_MOVIES_LIST_FRAGMENT)
         presenter.attachView(this)
+        val searchModel = this.arguments?.getSerializable(KEY_SEARCH_MODEL) as SearchModel
+        presenter.setSearchModel(searchModel)
         swipMovies.setOnRefreshListener(this@MoviesListFragment)
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerMovies.layoutManager = linearLayoutManager
         showsListAdapter =
-            MoviesListAdapter(shows) { movie: MovieInList -> onShowClickListener(movie) }
+            MoviesListAdapter(movies) { movie: MovieInList -> onShowClickListener(movie) }
         recyclerMovies.adapter = showsListAdapter
         if (isNetworkAvailable()) presenter.loadMovies(true)
         recyclerMovies.clearOnScrollListeners()
@@ -69,8 +73,8 @@ class MoviesListFragment : BaseFragment(), MoviesListContract.MoviesListView,
 
     override fun loadShowsList(showsList: List<MovieInList>, isFromRefresh: Boolean) {
         if (this@MoviesListFragment.isAdded) {
-            if (isFromRefresh) shows.clear()
-            shows.addAll(showsList)
+//            if (isFromRefresh) shows.clear()
+            movies.addAll(showsList)
             showsListAdapter.notifyDataSetChanged()
             swipMovies.isRefreshing = false
         }
@@ -105,6 +109,10 @@ class MoviesListFragment : BaseFragment(), MoviesListContract.MoviesListView,
 
     override fun hideProgressDialog() {
         progressMovies.gone()
+    }
+
+    override fun moviesLoaded(): Int {
+        return movies.size
     }
 
     private fun onShowClickListener(movie: MovieInList) {
